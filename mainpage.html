@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+	<script src="jquerymin.js"></script>
+	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	function takemetomainpage(){
+
+		window.location.assign("mainpage.html");
+
+	}
+
+examplejson={'name':'randomname',
+'orders':[
+{
+	'name':'cust1',
+	'orderid':'123',
+	'mobile':'9876543210',
+	'address':'DLF Phase 3, Gurgaon',
+	'remarks':'',
+		'order':[
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		],
+	'total':100
+},
+{
+	'name':'cust2',
+	'orderid':'123',
+	'mobile':'9876543210',
+	'address':'DLF Phase 3, Gurgaon',
+	'remarks':'',
+		'order':[
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		],
+	'total':100
+},
+{
+	'name':'cust3',
+	'orderid':'213',
+	'mobile':'9876543210',
+	'address':'DLF Phase 3, Gurgaon',
+	'remarks':'',
+		'order':[
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		{
+			'item':'Dal makhani',
+			'price':200,
+		'quantity':2
+		},
+		],
+	'total':100
+}
+]
+};
+
+console.log(examplejson.orders.length);
+//for (i=0;i<examplejson.length;i++)
+
+//alert(examplejson["orders"][0]["order"][0]);
+
+	// Your logic for checking credentials goes here.
+
+/*
+$.post("handler.php", { 
+  username: document.getElementById("form").elements[0].value,
+  password:document.getElementById("form").elements[1].value
+})
+.done(function( data ) {
+//console.log(data);
+try {    
+}
+catch (e) {
+    }
+});
+*/
+</script>
+<title>
+Welcome Page
+</title>
+<style type="text/css">
+#form{
+     position:absolute;
+     top:30%;     left:5%;
+     right:5%;
+    
+    bottom:0%;
+}
+</style>
+</head>
+<body>
+<center>
+<div class="panel panel-default">
+  <div id="header" class="panel-heading"></div>
+  <br>
+  <div class="inputs" id="orderlist"></div>
+  <br>
+  <div id="footer" class="panel-footer">Powered by Twigly</div>
+
+        <button onclick="showgpsdata()" type="button" class="btn btn-primary btn-block">Show GPS data</button>
+    
+
+</div>
+	
+</center>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="ordertotal"></h4>
+        </div>
+        <div class="modal-body" ><div id="bodycontentmodal"></div>
+          <div class="modal-body">
+<script>
+function fa(stsda){
+	
+	ls="";
+	ls=ls.concat("Name: ").concat(stsda['name']).concat("<br>");
+	//ls=ls.concat("Total: ").concat(stsda['total']).concat("<br><br>");
+	ls=ls.concat('<table style="width:100%"> ');
+	ls=ls.concat('<tr><td>Item</td><td>X</td><td>Price</td>').concat('</tr>');
+	for(i=0;i<stsda.order.length;i++)
+	{
+		ls=ls.concat('<tr><td>').concat(stsda.order[i].item).concat("</td><td>").concat(stsda.order[i].quantity).concat("</td><td>").concat(stsda.order[i].price).concat('</td></tr>');
+	}
+	ls=ls.concat("</table>")
+
+	ls=ls.concat('<form id="confirmdelivery()" autocomplete="off">	<div class="form-group"> <input type="text" class="form-control" id="pin" placeholder="Pin"> </form></div>')
+document.getElementById("bodycontentmodal").innerHTML=ls;
+}
+</script>
+
+        <button onclick="submitdeliveryrequest()" type="button" class="btn btn-primary btn-block">Confirm delivery</button>
+    
+        </div>
+        </button>
+
+        
+      </div>
+      
+    </div>
+  </div>
+
+<script type="text/javascript">
+
+
+function passforalertbox(stsda){
+	document.getElementById("ordertotal").innerHTML="Order total: ".concat(stsda.total);
+fa(stsda);
+	 $("#myModal").modal();
+	console.log(stsda);
+	ls="";
+	ls=ls.concat("Name:").concat(stsda['name']).concat("\n");
+	ls=ls.concat("Total:").concat(stsda['total']).concat("\n");
+	for(i=0;i<stsda.order.length;i++)
+	{
+		ls=ls.concat(stsda.order[i].item).concat(" ").concat(stsda.order[i].quantity).concat(" ").concat(stsda.order[i].price).concat("\n");
+	}
+	//prompt('<table style="width:100%"> <tr> <td>Jill</td> <td>Smith</td> <td>50</td> </tr> <tr> <td>Eve</td> <td>Jackson</td> <td>94</td> </tr> <tr> <td>John</td> <td>Doe</td> <td>80</td> </tr> </table>',"new");
+	//var person = prompt(ls, "Pin");
+    
+}
+
+document.getElementById("header").innerHTML=examplejson.name;
+
+    	for(var i=0;i<examplejson.orders.length;i++){
+
+    		sts="";
+    		sts=sts.concat('<div  onclick=\'passforalertbox(');
+    			sts=sts.concat(JSON.stringify(examplejson.orders[i]));
+    			sts=sts.concat(')\') > <div >');
+    		sts=sts.concat(examplejson.orders[i].orderid);
+    		sts=sts.concat('</div>  <div >');
+    		//sts=sts.concat('<div class="panel-body">');
+    		sts=sts.concat('<b>Name</b>:'.concat(examplejson.orders[i].name).concat('<br>'));
+
+    		sts=sts.concat('<b>Mobile</b>:'.concat(examplejson.orders[i].mobile).concat('<br>'));
+    		
+    		sts=sts.concat('<b>Address</b>:'.concat(examplejson.orders[i].address).concat('<br>'));
+    		if(i!=examplejson.orders.length-1)
+    		sts=sts.concat('<b>Remarks</b>:'.concat(examplejson.orders[i].remarks).concat("<hr><hr>"));
+    	else
+    		sts=sts.concat('<b>Remarks</b>:'.concat(examplejson.orders[i].remarks));
+    		//sts=sts.concat('</div>');
+
+    		sts=sts.concat('</div> </div>');
+    		console.log(sts);
+    	$(sts).fadeIn('slow').appendTo('.inputs');
+}
+function submitdeliveryrequest(){
+	alert("Pin entered is ".concat(document.getElementById("pin").value));
+	$.post("handler.php", { 
+  pin: document.getElementById("pin").value,
+  
+})
+.done(function( data ) {
+//code
+try {    
+}
+catch (e) {
+    }
+});
+}
+
+
+
+
+
+var sts="{";
+document.addEventListener("deviceready", onDeviceReady, false);
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        //window.localStorage.setItem("gpsdata","{");
+        //navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+
+
+
+        temporary=setInterval(function(){
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        
+        },5000);
+        
+      //alert(window.localStorage.getItem("gpsdata"));
+    
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+         //console.log("fa");
+        sts=sts.concat("{lt:");
+        sts=sts.concat(position.coords.latitude.toString());
+        sts=sts.concat(",lg:");
+        sts=sts.concat(position.coords.longitude.toString());
+        sts=sts.concat(",t:");
+        sts=sts.concat(((position.timestamp)/1000).toString());
+        sts=sts.concat("},");
+        console.log(window.localStorage.getItem("gpsdata"));
+                                //console.log(position.coords.latitude)   ;
+        
+      
+    
+ 
+    }
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+      if(error.code=='PositionError.POSITION_UNAVAILABLE')
+        {alert("Please allow location tracking from settings");
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');}
+    
+    else if(error.code=='PositionError.PERMISSION_DENIED')
+        {alert("Please allow location tracking from settings");
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+}
+function showgpsdata(){
+	alert(sts.concat("}"));
+}
+</script>
+
+</body>
+</html>

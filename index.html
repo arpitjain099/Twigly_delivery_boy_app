@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="jquerymin.js"></script>
+
+	<script type="text/javascript">
+	function takemetomainpage(){
+
+		window.location.assign("mainpage.html");
+
+	}
+
+	// Your logic for checking credentials goes here.
+
+/*
+$.post("handler.php", { 
+  username: document.getElementById("form").elements[0].value,
+  password:document.getElementById("form").elements[1].value
+})
+.done(function( data ) {
+//console.log(data);
+try {    
+}
+catch (e) {
+    }
+});
+*/
+</script>
+<title>
+Welcome Page
+</title>
+<style type="text/css">
+#form{
+     position:absolute;
+     top:30%;     left:5%;
+     right:5%;
+    
+    bottom:0%;
+}
+</style>
+</head>
+<body>
+<center>
+<form id="form" autocomplete="off">	
+      <input type="text" class="form-control" id="password" placeholder="Username">
+	        <input type="password" class="form-control" id="password" placeholder="Password">
+<br>
+	  <button onclick="takemetomainpage()" type="button" class="btn btn-primary btn-block">Login</button>
+
+	</form>
+
+	
+</center>
+</body>
+</html>
